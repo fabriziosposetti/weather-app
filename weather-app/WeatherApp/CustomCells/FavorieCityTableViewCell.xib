@@ -16,24 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="FavorieCityTableViewCell" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-a1-dNE">
-                        <rect key="frame" x="16" y="8.5" width="304" height="27.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="FavorieCityTableViewCell" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpk-a1-dNE">
+                        <rect key="frame" x="16" y="8" width="219.5" height="28"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RY0-Sw-yoA">
+                        <rect key="frame" x="251.5" y="9" width="52.5" height="26.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Rpk-a1-dNE" secondAttribute="trailing" id="Zfg-Cr-vrR"/>
-                    <constraint firstItem="Rpk-a1-dNE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dDP-UR-kzN"/>
-                    <constraint firstItem="Rpk-a1-dNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="eFU-Bc-VBh"/>
+                    <constraint firstItem="RY0-Sw-yoA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HKY-ik-gau"/>
+                    <constraint firstItem="Rpk-a1-dNE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="j6s-Dm-B0A"/>
+                    <constraint firstItem="Rpk-a1-dNE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wub-94-D68"/>
+                    <constraint firstItem="RY0-Sw-yoA" firstAttribute="leading" secondItem="Rpk-a1-dNE" secondAttribute="trailing" constant="16" id="wyz-Cq-oCc"/>
+                    <constraint firstAttribute="trailing" secondItem="RY0-Sw-yoA" secondAttribute="trailing" constant="16" id="zW5-1F-rgK"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cityNameLabel" destination="Rpk-a1-dNE" id="2xC-zt-9h0"/>
+                <outlet property="tempLabel" destination="RY0-Sw-yoA" id="xhj-vD-AJ1"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
         </tableViewCell>

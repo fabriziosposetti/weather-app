@@ -18,7 +18,7 @@ class CurrentCityViewController: UIViewController {
     var presenter: CurrentCityPresenterProtocol?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
-    var favoriteCities = [String]()
+    var favoriteCities = [FavoriteCityWeather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class CurrentCityViewController: UIViewController {
 
 extension CurrentCityViewController: CurrentCityViewProtocol {
     
-    func reloadTableView(cityAdded: String) {
+    func reloadTableView(cityAdded: FavoriteCityWeather) {
         favoritesCitiesTableView.isHidden = false
         favoriteCities.append(cityAdded)
         favoritesCitiesTableView.reloadData()
@@ -94,7 +94,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavorieCityTableViewCell", for: indexPath) as! FavorieCityTableViewCell
-        cell.configure(cityName: favoriteCities[indexPath.row])
+        cell.configure(favoriteCityWeather: favoriteCities[indexPath.row])
         return cell
     }
     

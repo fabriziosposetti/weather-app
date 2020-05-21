@@ -14,7 +14,7 @@ protocol CurrentCityViewProtocol: class {
     func updateTemperatureLabel(temperature: String)
     func updateCurrentCityLabel(city: String)
     func showError(error: Error)
-    func reloadTableView(cityAdded: String)
+    func reloadTableView(cityAdded: FavoriteCityWeather)
 }
 
 protocol CurrentCityPresenterProtocol: class {

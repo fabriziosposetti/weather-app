@@ -10,6 +10,7 @@ import UIKit
 
 class FavorieCityTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     static let nibName = "FavorieCityTableViewCell"
 
@@ -22,11 +23,13 @@ class FavorieCityTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(cityName: String) {
+    func configure(favoriteCityWeather: FavoriteCityWeather) {
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
         self.backgroundView?.backgroundColor = .clear
-        cityNameLabel.text = cityName
+        cityNameLabel.text = favoriteCityWeather.name + ", " + favoriteCityWeather.country
+        tempLabel.text = favoriteCityWeather.temp
+        
     }
     
 }

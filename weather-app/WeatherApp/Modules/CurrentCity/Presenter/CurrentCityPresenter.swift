@@ -9,12 +9,14 @@
 import Foundation
 import CoreLocation
 
+typealias FavoriteCityWeather = (name: String, country: String, temp: String)
+
 class CurrentCityPresenter {
     
     weak var view: CurrentCityViewProtocol?
     var interactor: CurrentCityInteractorProtocol?
     var router: CurrentCityRouterProtocol?
-    var favoriteCityAdded: String?
+    var weatherOfCityAdded: CurrentWeather?
 
 }
 
@@ -44,7 +46,10 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func presentationControllerDidDismiss() {
-        view?.reloadTableView(cityAdded: favoriteCityAdded ?? "")
+        let temp = Int(round(weatherOfCityAdded?.main.temp ?? 0))
+
+        let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", "\(temp) °")
+        view?.reloadTableView(cityAdded: favoriteCityAdded)
     }
     
 }

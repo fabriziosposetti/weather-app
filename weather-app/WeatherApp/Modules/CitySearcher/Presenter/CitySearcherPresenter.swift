@@ -17,7 +17,7 @@ class CitySearcherPresenter {
 }
 
 extension CitySearcherPresenter: CitySearcherPresenterProtocol {
-        
+    
     func fetchCities() {
         interactor?.fetchCities()
     }
@@ -29,9 +29,13 @@ extension CitySearcherPresenter: CitySearcherPresenterProtocol {
         }
         view?.loadCities(citiesToFilter: citiesToFilter)
     }
-
+    
     func citySelected(city: CitiesToFilter) {
         interactor?.fetchWeatherToSelectedCity(cityId: city.1)
+    }
+    
+    func currentWeatherForCitySelected(currentWeather: CurrentWeather) {
+        router?.navigateCurrentCityToAddCityWith(currentWeather: currentWeather)
     }
     
 }

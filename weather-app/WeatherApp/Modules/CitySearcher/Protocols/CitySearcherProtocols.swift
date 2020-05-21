@@ -16,6 +16,7 @@ protocol CitySearcherPresenterProtocol: class {
     func fetchCities()
     func onCitiesFetched(cities: [City])
     func citySelected(city: CitiesToFilter)
+    func currentWeatherForCitySelected(currentWeather: CurrentWeather)
 }
 
 protocol CitySearcherInteractorProtocol {
@@ -24,5 +25,5 @@ protocol CitySearcherInteractorProtocol {
 }
 
 protocol CitySearcherRouterProtocol {
-    func navigateCurrentCityToAddCity(city: String)
+    func navigateCurrentCityToAddCityWith(currentWeather: CurrentWeather)
 }
