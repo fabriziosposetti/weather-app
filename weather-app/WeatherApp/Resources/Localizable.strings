@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by Fabrizio Sposetti on 18/05/2020.
+  Copyright © 2020 Fabrizio Sposetti. All rights reserved.
+*/
+
+"ERROR" = "Error";
+"CLOSE" = "Cerrar";

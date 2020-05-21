@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrentCityViewController" customModule="Weather" customModuleProvider="target">
+            <connections>
+                <outlet property="currentCity" destination="mwI-hT-ypw" id="Tsa-R4-CbU"/>
+                <outlet property="currentTemp" destination="PIp-Kf-YGV" id="wd8-jA-QWV"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-weather" translatesAutoresizingMaskIntoConstraints="NO" id="bOh-5W-Z0G">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwI-hT-ypw">
+                    <rect key="frame" x="164" y="84" width="86" height="47"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIp-Kf-YGV">
+                    <rect key="frame" x="174" y="156" width="66" height="72"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-FZ-I5B">
+                    <rect key="frame" x="351" y="48" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="plus">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="addBtnTapped:" destination="-1" eventType="touchUpInside" id="8yr-3g-Kvg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mwI-hT-ypw" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="02B-3d-KnR"/>
+                <constraint firstAttribute="bottom" secondItem="bOh-5W-Z0G" secondAttribute="bottom" id="455-Fg-JmG"/>
+                <constraint firstItem="PIp-Kf-YGV" firstAttribute="top" secondItem="mwI-hT-ypw" secondAttribute="bottom" constant="25" id="8Gt-Uy-kOB"/>
+                <constraint firstItem="bOh-5W-Z0G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AbL-Pz-EYu"/>
+                <constraint firstItem="PIp-Kf-YGV" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="SX6-7l-ceJ"/>
+                <constraint firstItem="bOh-5W-Z0G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YHX-ua-Nvg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bOh-5W-Z0G" secondAttribute="trailing" id="mic-Yy-swm"/>
+                <constraint firstItem="mwI-hT-ypw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="u8B-8u-CGh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="140.57971014492756" y="137.94642857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background-weather" width="800" height="533"/>
+        <image name="plus" width="40" height="40"/>
+    </resources>
+</document>
