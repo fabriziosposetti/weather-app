@@ -11,7 +11,7 @@ import Alamofire
 import PromiseKit
 
 
-class OpenWeatherAPI: CurrentCityDataSource {
+class OpenWeatherAPI {
     
     static let shared = OpenWeatherAPI()
     

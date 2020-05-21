@@ -17,7 +17,8 @@ extension CitySearcherRouter: CitySearcherRouterProtocol {
 
     func navigateCurrentCityToAddCity(city: String) {
         if let view = view?.presentingViewController as? CurrentCityViewController, let presenter: CurrentCityPresenter = view.presenter as? CurrentCityPresenter {
-            presenter.favouritesCities?.append(city)
+            presenter.favoriteCityAdded = city
+            view.presentationControllerDidDismiss()
           }
         view?.dismiss(animated: true, completion: nil)
     }

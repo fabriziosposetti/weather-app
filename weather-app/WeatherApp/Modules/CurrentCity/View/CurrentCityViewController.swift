@@ -11,28 +11,56 @@ import CoreLocation
 
 class CurrentCityViewController: UIViewController {
     
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var favoritesCitiesTableView: UITableView!
     @IBOutlet weak var currentTemp: UILabel!
     @IBOutlet weak var currentCity: UILabel!
     var presenter: CurrentCityPresenterProtocol?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation!
-        
+    var favoriteCities = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
+        presenter?.viewDidLoaded()
+    }
+    
+    private func configureTableView() {
+        self.favoritesCitiesTableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        favoritesCitiesTableView.delegate = self
+        favoritesCitiesTableView.dataSource = self
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        favoritesCitiesTableView.layer.removeAllAnimations()
+        tableViewHeightConstraint.constant = favoritesCitiesTableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.updateViewConstraints()
+        }
+        
     }
     
     @IBAction func addBtnTapped(_ sender: UIButton) {
         presenter?.addCityPressed()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        presenter?.viewDidLoaded()
+    func presentationControllerDidDismiss() {
+        presenter?.presentationControllerDidDismiss()
     }
+    
     
 }
 
 extension CurrentCityViewController: CurrentCityViewProtocol {
+    
+    func reloadTableView(cityAdded: String) {
+        favoritesCitiesTableView.isHidden = false
+        favoriteCities.append(cityAdded)
+        favoritesCitiesTableView.reloadData()
+        
+    }
+    
     func determineCurrentLocation() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -57,13 +85,32 @@ extension CurrentCityViewController: CurrentCityViewProtocol {
     
 }
 
+extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favoriteCities.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = favoriteCities[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "FAVORITES_CITIES".localized()
+    }
+    
+    
+}
+
 extension CurrentCityViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-//            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-//                                        longitude: userLocation.coordinate.longitude)
+            //            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+            //                                        longitude: userLocation.coordinate.longitude)
         }
     }
     

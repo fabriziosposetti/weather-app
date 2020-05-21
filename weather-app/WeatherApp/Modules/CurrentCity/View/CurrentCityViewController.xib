@@ -11,6 +11,8 @@
             <connections>
                 <outlet property="currentCity" destination="mwI-hT-ypw" id="Tsa-R4-CbU"/>
                 <outlet property="currentTemp" destination="PIp-Kf-YGV" id="wd8-jA-QWV"/>
+                <outlet property="favoritesCitiesTableView" destination="aVs-kc-8b7" id="Mlv-fQ-siF"/>
+                <outlet property="tableViewHeightConstraint" destination="bgE-v4-4h4" id="uEn-dC-np2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -44,6 +46,13 @@
                         <action selector="addBtnTapped:" destination="-1" eventType="touchUpInside" id="8yr-3g-Kvg"/>
                     </connections>
                 </button>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aVs-kc-8b7">
+                    <rect key="frame" x="0.0" y="462" width="414" height="400"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="bgE-v4-4h4"/>
+                    </constraints>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -52,9 +61,12 @@
                 <constraint firstItem="PIp-Kf-YGV" firstAttribute="top" secondItem="mwI-hT-ypw" secondAttribute="bottom" constant="25" id="8Gt-Uy-kOB"/>
                 <constraint firstItem="bOh-5W-Z0G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AbL-Pz-EYu"/>
                 <constraint firstItem="PIp-Kf-YGV" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="SX6-7l-ceJ"/>
+                <constraint firstItem="aVs-kc-8b7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tzv-g4-XLS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aVs-kc-8b7" secondAttribute="trailing" id="VLP-YW-Hgn"/>
                 <constraint firstItem="bOh-5W-Z0G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YHX-ua-Nvg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bOh-5W-Z0G" secondAttribute="trailing" id="mic-Yy-swm"/>
                 <constraint firstItem="mwI-hT-ypw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="u8B-8u-CGh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aVs-kc-8b7" secondAttribute="bottom" id="vVf-24-usC"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="140.57971014492756" y="137.94642857142856"/>

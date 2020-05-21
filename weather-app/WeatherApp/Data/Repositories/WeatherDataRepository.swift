@@ -11,14 +11,9 @@ import PromiseKit
 import SwiftyJSON
 import RealmSwift
 
-protocol CurrentCityDataSource {
-    func getWeather(latitude: String, longitude: String) -> Promise<CurrentWeather>
-}
-
-
 class WeatherDataRepository: WeatherRepository {
     
-    private let openWeatherAPI: CurrentCityDataSource = OpenWeatherAPI.shared
+    private let openWeatherAPI = OpenWeatherAPI.shared
     private var realm : Realm!
     
     init() {

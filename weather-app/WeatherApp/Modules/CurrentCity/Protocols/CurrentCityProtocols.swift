@@ -14,6 +14,7 @@ protocol CurrentCityViewProtocol: class {
     func updateTemperatureLabel(temperature: String)
     func updateCurrentCityLabel(city: String)
     func showError(error: Error)
+    func reloadTableView(cityAdded: String)
 }
 
 protocol CurrentCityPresenterProtocol: class {
@@ -22,6 +23,7 @@ protocol CurrentCityPresenterProtocol: class {
     func weatherFetched(currentWeather: CurrentWeather)
     func onWeatherFetchedFailed(error: Error)
     func addCityPressed()
+    func presentationControllerDidDismiss()
 }
 
 protocol CurrentCityInteractorProtocol {
