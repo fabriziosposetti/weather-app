@@ -13,9 +13,11 @@ class CitySearcherViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var citiesTableView: UITableView!
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var presenter: CitySearcherPresenterProtocol?
     var citiesNames = [CitiesToFilter]()
     var filteredCitiesNames = [CitiesToFilter]()
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,9 +52,19 @@ extension CitySearcherViewController: UITableViewDelegate, UITableViewDataSource
     
 }
 
-
-
 extension CitySearcherViewController: CitySearcherViewProtocol {
+    
+    func showLoading() {
+        showActivityIndicator(activityIndicator: activityIndicator)
+    }
+    
+    func hideLoading() {
+        stopActivityIndicator(activityIndicator: activityIndicator)
+    }
+    
+    func showError(error: Error) {
+        showAlert(with: error)
+    }
     
     func loadCities(citiesToFilter: [CitiesToFilter]) {
         self.citiesNames = citiesToFilter

@@ -28,7 +28,7 @@ class CurrentCityViewController: UIViewController {
     
     private func configureTableView() {
         self.favoritesCitiesTableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
-        favoritesCitiesTableView.register(UINib(nibName: FavorieCityTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: "FavorieCityTableViewCell")
+        favoritesCitiesTableView.register(UINib(nibName: FavorieCityTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: FavorieCityTableViewCell.nibName)
         favoritesCitiesTableView.delegate = self
         favoritesCitiesTableView.dataSource = self
     }
@@ -93,7 +93,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavorieCityTableViewCell", for: indexPath) as! FavorieCityTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavorieCityTableViewCell.nibName, for: indexPath) as! FavorieCityTableViewCell
         cell.configure(favoriteCityWeather: favoriteCities[indexPath.row])
         return cell
     }
@@ -110,8 +110,8 @@ extension CurrentCityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-            //            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-            //                                        longitude: userLocation.coordinate.longitude)
+            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+                                        longitude: userLocation.coordinate.longitude)
         }
     }
     

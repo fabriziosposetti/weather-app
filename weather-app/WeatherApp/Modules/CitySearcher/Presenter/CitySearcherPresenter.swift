@@ -18,6 +18,15 @@ class CitySearcherPresenter {
 
 extension CitySearcherPresenter: CitySearcherPresenterProtocol {
     
+    func currentWeatherForCitySelectedFailed(error: Error) {
+        view?.showError(error: error)
+    }
+    
+    func onCitiesFetchedFailed(error: Error) {
+        view?.showError(error: error)
+    }
+    
+    
     func fetchCities() {
         interactor?.fetchCities()
     }
@@ -25,16 +34,18 @@ extension CitySearcherPresenter: CitySearcherPresenterProtocol {
     func onCitiesFetched(cities: [City]) {
         var citiesToFilter = [CitiesToFilter]()
         for city in cities {
-            citiesToFilter.append(("\(city.name ?? "") ," + "\(city.country ?? "")", city.id))
+            citiesToFilter.append(("\(city.name ?? ""), " + "\(city.country ?? "")", city.id))
         }
         view?.loadCities(citiesToFilter: citiesToFilter)
     }
     
     func citySelected(city: CitiesToFilter) {
+        view?.showLoading()
         interactor?.fetchWeatherToSelectedCity(cityId: city.1)
     }
     
     func currentWeatherForCitySelected(currentWeather: CurrentWeather) {
+        view?.hideLoading()
         router?.navigateCurrentCityToAddCityWith(currentWeather: currentWeather)
     }
     

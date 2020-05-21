@@ -23,6 +23,8 @@ extension CitySearcherInteractor: CitySearcherInteractorProtocol {
     func fetchWeatherToSelectedCity(cityId: Int) {
         _ = citySearcherRepository?.getWeather(cityId: cityId).done({ currentWeather in
             self.presenter?.currentWeatherForCitySelected(currentWeather: currentWeather)
+        }).catch({ error in
+            self.presenter?.currentWeatherForCitySelectedFailed(error: error)
         })
     }
     
@@ -31,7 +33,8 @@ extension CitySearcherInteractor: CitySearcherInteractorProtocol {
         _  = citySearcherRepository?.getCities().done({ cities in
             self.presenter?.onCitiesFetched(cities: cities)
         }).catch({ error in
-            print(error)
+            self.presenter?.onCitiesFetchedFailed(error: error)
+            
         })
     }
     

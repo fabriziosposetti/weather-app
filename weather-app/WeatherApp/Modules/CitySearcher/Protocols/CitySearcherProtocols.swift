@@ -10,6 +10,9 @@ import Foundation
 
 protocol CitySearcherViewProtocol: class {
     func loadCities(citiesToFilter: [CitiesToFilter])
+    func showError(error: Error)
+    func showLoading()
+    func hideLoading()
 }
 
 protocol CitySearcherPresenterProtocol: class {
@@ -17,6 +20,8 @@ protocol CitySearcherPresenterProtocol: class {
     func onCitiesFetched(cities: [City])
     func citySelected(city: CitiesToFilter)
     func currentWeatherForCitySelected(currentWeather: CurrentWeather)
+    func currentWeatherForCitySelectedFailed(error: Error)
+    func onCitiesFetchedFailed(error: Error)
 }
 
 protocol CitySearcherInteractorProtocol {
