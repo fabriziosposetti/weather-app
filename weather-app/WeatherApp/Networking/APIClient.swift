@@ -28,7 +28,6 @@ class APIClient {
                                 return
                             }
                             completion.reject(error)
-                            
                         }
                 }
             } else {

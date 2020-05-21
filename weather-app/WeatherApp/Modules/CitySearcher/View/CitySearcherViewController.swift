@@ -14,8 +14,8 @@ class CitySearcherViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var citiesTableView: UITableView!
     var presenter: CitySearcherPresenterProtocol?
-    var citiesNames = [String]()
-    var filteredCitiesNames = [String]()
+    var citiesNames = [CitiesToFilter]()
+    var filteredCitiesNames = [CitiesToFilter]()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,13 +39,13 @@ extension CitySearcherViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        let city = filteredCitiesNames[indexPath.row]
+        let city = filteredCitiesNames[indexPath.row].0
         cell.textLabel?.text = city
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.cityNameSelected(name: filteredCitiesNames[indexPath.row])
+        presenter?.citySelected(city: filteredCitiesNames[indexPath.row])
     }
     
 }
@@ -54,9 +54,9 @@ extension CitySearcherViewController: UITableViewDelegate, UITableViewDataSource
 
 extension CitySearcherViewController: CitySearcherViewProtocol {
     
-    func loadCities(citiesNames: [String]) {
-        self.citiesNames = citiesNames
-        filteredCitiesNames = citiesNames
+    func loadCities(citiesToFilter: [CitiesToFilter]) {
+        self.citiesNames = citiesToFilter
+        filteredCitiesNames = citiesToFilter
     }
     
 }
@@ -64,8 +64,8 @@ extension CitySearcherViewController: CitySearcherViewProtocol {
 extension CitySearcherViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredCitiesNames = searchText.isEmpty ? citiesNames : citiesNames.filter { (item: String) -> Bool in
-            return item.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        filteredCitiesNames = searchText.isEmpty ? citiesNames : citiesNames.filter { (item: CitiesToFilter) -> Bool in
+            return item.0.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         citiesTableView.reloadData()
     }

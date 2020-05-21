@@ -8,16 +8,13 @@
 
 import Foundation
 
+typealias CitiesToFilter = (String, Int)
+
 class CitySearcherPresenter {
     weak var view: CitySearcherViewProtocol?
     var interactor: CitySearcherInteractorProtocol?
     var router: CitySearcherRouterProtocol?
-    
-    private var cities: [City]?
-    private var filteredCities: [City]?
-    
 }
-
 
 extension CitySearcherPresenter: CitySearcherPresenterProtocol {
         
@@ -25,17 +22,16 @@ extension CitySearcherPresenter: CitySearcherPresenterProtocol {
         interactor?.fetchCities()
     }
     
-    
     func onCitiesFetched(cities: [City]) {
-        var citiesNames = [String]()
+        var citiesToFilter = [CitiesToFilter]()
         for city in cities {
-            citiesNames.append("\(city.name ?? "") ," + "\(city.country ?? "")")
+            citiesToFilter.append(("\(city.name ?? "") ," + "\(city.country ?? "")", city.id))
         }
-        view?.loadCities(citiesNames: citiesNames)
+        view?.loadCities(citiesToFilter: citiesToFilter)
     }
-    
-    func cityNameSelected(name: String) {
-        router?.navigateCurrentCityToAddCity(city: name)
+
+    func citySelected(city: CitiesToFilter) {
+        interactor?.fetchWeatherToSelectedCity(cityId: city.1)
     }
     
 }

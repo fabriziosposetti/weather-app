@@ -26,6 +26,11 @@ class WeatherDataRepository: WeatherRepository {
         openWeatherAPI.getWeather(latitude: latitude, longitude: longitude)
     }
     
+    func getWeather(cityId: Int) -> Promise<CurrentWeather> {
+        openWeatherAPI.getWeather(cityId: cityId)
+    }
+    
+    
     func getCities() -> Promise<[City]> {
         return Promise { completion in
             let cities = Array(realm.objects(City.self))

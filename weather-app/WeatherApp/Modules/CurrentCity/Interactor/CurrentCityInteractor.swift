@@ -13,6 +13,7 @@ import PromiseKit
 
 protocol WeatherRepository {
     func getWeather(latitude: String, longitude: String) -> Promise<CurrentWeather>
+    func getWeather(cityId: Int) -> Promise<CurrentWeather>
     func getCities() -> Promise<[City]>
 }
 

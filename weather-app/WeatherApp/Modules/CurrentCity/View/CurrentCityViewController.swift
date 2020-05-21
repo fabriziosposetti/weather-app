@@ -28,6 +28,7 @@ class CurrentCityViewController: UIViewController {
     
     private func configureTableView() {
         self.favoritesCitiesTableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        favoritesCitiesTableView.register(UINib(nibName: FavorieCityTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: "FavorieCityTableViewCell")
         favoritesCitiesTableView.delegate = self
         favoritesCitiesTableView.dataSource = self
     }
@@ -92,8 +93,8 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = favoriteCities[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavorieCityTableViewCell", for: indexPath) as! FavorieCityTableViewCell
+        cell.configure(cityName: favoriteCities[indexPath.row])
         return cell
     }
     

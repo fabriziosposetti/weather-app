@@ -9,17 +9,18 @@
 import Foundation
 
 protocol CitySearcherViewProtocol: class {
-    func loadCities(citiesNames: [String])
+    func loadCities(citiesToFilter: [CitiesToFilter])
 }
 
 protocol CitySearcherPresenterProtocol: class {
     func fetchCities()
     func onCitiesFetched(cities: [City])
-    func cityNameSelected(name: String)
+    func citySelected(city: CitiesToFilter)
 }
 
 protocol CitySearcherInteractorProtocol {
     func fetchCities()
+    func fetchWeatherToSelectedCity(cityId: Int)
 }
 
 protocol CitySearcherRouterProtocol {

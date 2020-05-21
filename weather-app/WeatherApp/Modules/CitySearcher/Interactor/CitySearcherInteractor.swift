@@ -20,6 +20,13 @@ class CitySearcherInteractor {
 
 extension CitySearcherInteractor: CitySearcherInteractorProtocol {
     
+    func fetchWeatherToSelectedCity(cityId: Int) {
+        _ = citySearcherRepository?.getWeather(cityId: cityId).done({ currentWeather in
+            
+        })
+    }
+    
+    
     func fetchCities() {
         _  = citySearcherRepository?.getCities().done({ cities in
             self.presenter?.onCitiesFetched(cities: cities)

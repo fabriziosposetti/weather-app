@@ -22,5 +22,9 @@ class OpenWeatherAPI {
         return APIClient.request(request: request)
     }
 
+    func getWeather(cityId: Int) -> Promise<CurrentWeather> {
+           let request = Deal.shared.getCurrentWeatherRequest(cityId: cityId)
+           return APIClient.request(request: request)
+       }
     
 }
