@@ -12,7 +12,7 @@ import SwiftyJSON
 import RealmSwift
 
 class WeatherDataRepository: WeatherRepository {
-
+    
     private let openWeatherAPI = OpenWeatherAPI.shared
     private var realm : Realm!
     
@@ -59,6 +59,19 @@ class WeatherDataRepository: WeatherRepository {
     
     func getWeatherForMultiplesCities(citiesId: [Int]) -> Promise<MultipleWeather> {
         openWeatherAPI.getWeatherForMultiplesCities(citiesId: citiesId)
+    }
+    
+    func removeFavoriteCity(cityId: Int) {
+        let cities: [City] = Array(realm.objects(City.self).filter("id = %@", cityId))
+        if let city = cities.first {
+            do {
+                try realm.write {
+                    city.isFavorite = false
+                }
+            } catch (let error) {
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }

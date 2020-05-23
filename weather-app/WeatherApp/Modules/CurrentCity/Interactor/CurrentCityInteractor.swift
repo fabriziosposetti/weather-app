@@ -18,6 +18,7 @@ protocol WeatherRepository {
     func addWeatherFavoriteCity(weatherFavoriteCity: CurrentWeather)
     func getFavoritesCities() -> Promise<[City]>
     func getWeatherForMultiplesCities(citiesId: [Int]) -> Promise<MultipleWeather>
+    func removeFavoriteCity(cityId: Int)
 }
 
 
@@ -33,6 +34,11 @@ class CurrentCityInteractor {
 }
 
 extension CurrentCityInteractor: CurrentCityInteractorProtocol {
+    
+    func removeFavoriteCity(cityId: Int) {
+        currentCityRepository?.removeFavoriteCity(cityId: cityId)
+    }
+    
     
     func fetchWeatherFrom(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         _ = currentCityRepository?.getWeather(latitude: "\(latitude)", longitude: "\(longitude)").done ({ weatherModel in

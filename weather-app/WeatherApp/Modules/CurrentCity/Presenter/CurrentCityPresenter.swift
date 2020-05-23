@@ -18,10 +18,13 @@ class CurrentCityPresenter {
     var router: CurrentCityRouterProtocol?
     var weatherOfCityAdded: CurrentWeather?
     var favorites = [FavoriteCityWeather]()
-    
 }
 
 extension CurrentCityPresenter: CurrentCityPresenterProtocol {
+    
+    func removeFavoriteCity(cityId: Int) {
+        interactor?.removeFavoriteCity(cityId: cityId)
+    }
     
     func viewDidLoaded() {
         view?.determineCurrentLocation()
@@ -46,7 +49,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
         }
         view?.reloadTableView(citiesAdded: favorites)
         let ids = favoritesCities.map({$0.id})
-        interactor?.fetchWeatherBy(citiesId: ids)
+     //   interactor?.fetchWeatherBy(citiesId: ids)
     }
     
     func multipleWeatherFetched(multipleWeather: MultipleWeather) {

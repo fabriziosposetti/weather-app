@@ -100,6 +100,18 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
         return "FAVORITES_CITIES".localized()
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            presenter?.removeFavoriteCity(cityId: favoriteCities[indexPath.row].id)
+            favoriteCities.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
+    
     
 }
 
@@ -108,8 +120,8 @@ extension CurrentCityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-                                        longitude: userLocation.coordinate.longitude)
+//            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+//                                        longitude: userLocation.coordinate.longitude)
         }
     }
     
