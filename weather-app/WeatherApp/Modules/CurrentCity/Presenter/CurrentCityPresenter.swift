@@ -22,8 +22,10 @@ class CurrentCityPresenter {
 
 extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
-    func favoriteCitySelected(lat: Double, lon: Double) {
-        router?.presentCityForecast(lat: lat, lon: lon)
+    func favoriteCitySelected(citySelected: FavoriteCityWeather) {
+        router?.presentCityForecast(lat: citySelected.lat ?? 0.0,
+                                    lon: citySelected.lon ?? 0.0,
+                                    cityName: citySelected.name + " ," + citySelected.country)
     }
     
     func removeFavoriteCity(cityId: Int) {

@@ -28,7 +28,7 @@ class CurrentCityViewController: UIViewController {
     
     private func configureTableView() {
         self.favoritesCitiesTableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
-        favoritesCitiesTableView.register(UINib(nibName: FavorieCityTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: FavorieCityTableViewCell.nibName)
+        favoritesCitiesTableView.register(UINib(nibName: FavoriteCityTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: FavoriteCityTableViewCell.nibName)
         favoritesCitiesTableView.delegate = self
         favoritesCitiesTableView.dataSource = self
     }
@@ -39,7 +39,6 @@ class CurrentCityViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.updateViewConstraints()
         }
-        
     }
     
     @IBAction func addBtnTapped(_ sender: UIButton) {
@@ -95,7 +94,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FavorieCityTableViewCell.nibName, for: indexPath) as! FavorieCityTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCityTableViewCell.nibName, for: indexPath) as! FavoriteCityTableViewCell
         cell.configure(favoriteCityWeather: favoriteCities[indexPath.row])
         return cell
     }
@@ -117,8 +116,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.favoriteCitySelected(lat: favoriteCities[indexPath.row].lat ?? 0.0,
-                                        lon: favoriteCities[indexPath.row].lon ?? 0.0)
+        presenter?.favoriteCitySelected(citySelected: favoriteCities[indexPath.row])
     }
     
 }

@@ -8,13 +8,14 @@
 
 import Foundation
 
-typealias ForecastInformation = (city: String, days: [String])
+typealias WeatherInformationPerDay = (day: String, max: String, min: String)
+typealias ForecastInformation = (city: String, forecastForDay: [WeatherInformationPerDay])
 
 class CityForecastPresenter {
     weak var view: CityForecastViewProtocol?
     var interactor: CityForecastInteractorProtocol?
     var router: CityForecastRouterProtocol?
-    
+    var cityName: String?
 }
 
 extension CityForecastPresenter: CityForecastPresenterProtocol {
@@ -26,12 +27,12 @@ extension CityForecastPresenter: CityForecastPresenterProtocol {
     
     func onForecastFetched(forecast: Forecast) {
         view?.hideLoading()
-        var days = [String]()
+        var forecastForDay = [WeatherInformationPerDay]()
         for day in forecast.daily {
-            days.append(day.getDate())
+            forecastForDay.append((day.getDate(), "\(day.temp.getStringMaxTemp())", "\(day.temp.getStringMinTemp())"))
         }
         
-        let forecastInf = ForecastInformation("TENGO qe pasarla", days)
+        let forecastInf = ForecastInformation(cityName ?? "", forecastForDay)
         view?.updateForecastView(forecastInformation: forecastInf)
     }
     

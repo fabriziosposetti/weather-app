@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FavorieCityTableViewCell: UITableViewCell {
+class FavoriteCityTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
-    static let nibName = "FavorieCityTableViewCell"
+    static let nibName = "FavoriteCityTableViewCell"
 
     
     override func awakeFromNib() {
@@ -26,7 +26,6 @@ class FavorieCityTableViewCell: UITableViewCell {
     func configure(favoriteCityWeather: FavoriteCityWeather) {
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
-        self.backgroundView?.backgroundColor = .clear
         cityNameLabel.text = favoriteCityWeather.name + ", " + favoriteCityWeather.country
         tempLabel.text = favoriteCityWeather.temp
         

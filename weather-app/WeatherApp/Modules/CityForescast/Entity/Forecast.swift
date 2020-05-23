@@ -17,7 +17,7 @@ struct Forecast: Codable {
 struct Daily: Codable {
     let dt: Int
     let temp: Temp
-
+    
     
     func getDate() -> String {
         return NSDate(timeIntervalSince1970: TimeInterval(dt)).toDayMonthAndYearString()
@@ -29,4 +29,11 @@ struct Daily: Codable {
 struct Temp: Codable {
     let day, min, max, night: Double
     let eve, morn: Double
+    
+    func getStringMinTemp() -> String {
+        return "\(Int(round(min))) °"
+    }
+    func getStringMaxTemp() -> String {
+        return "\(Int(round(max))) °"
+    }
 }

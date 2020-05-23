@@ -26,9 +26,9 @@ extension CurrentCityRouter: CurrentCityRouterProtocol {
         }
     }
     
-    func presentCityForecast(lat: Double, lon: Double) {
+    func presentCityForecast(lat: Double, lon: Double, cityName: String) {
         if let view = view {
-            let viewController: CityForecastViewController = CityForecastBuilder.createModule(lat: lat, lon: lon)
+            let viewController: CityForecastViewController = CityForecastBuilder.createModule(lat: lat, lon: lon, cityName: cityName)
             view.modalPresentationStyle = .fullScreen
             view.present(viewController, animated: true, completion: nil)
         }
