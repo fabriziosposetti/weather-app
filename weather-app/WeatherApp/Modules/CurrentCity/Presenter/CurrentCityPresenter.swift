@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-typealias FavoriteCityWeather = (name: String, country: String, temp: String)
+typealias FavoriteCityWeather = (name: String, country: String, temp: String, id: Int)
 
 class CurrentCityPresenter {
     
@@ -17,6 +17,7 @@ class CurrentCityPresenter {
     var interactor: CurrentCityInteractorProtocol?
     var router: CurrentCityRouterProtocol?
     var weatherOfCityAdded: CurrentWeather?
+    var favorites = [FavoriteCityWeather]()
     
 }
 
@@ -28,7 +29,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func fetchWeatherFrom(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        interactor?.fetchTemperatureFrom(latitude: latitude, longitude: longitude)
+        interactor?.fetchWeatherFrom(latitude: latitude, longitude: longitude)
     }
     
     func weatherFetched(currentWeather: CurrentWeather) {
@@ -39,9 +40,20 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func favoritesCitiesFetched(favoritesCities: [City]) {
-        var favorites = [FavoriteCityWeather]()
         for city in favoritesCities {
-            let favoriteCityAdded = FavoriteCityWeather(city.name!, city.country!, "\("--") °")
+            let favoriteCityAdded = FavoriteCityWeather(city.name!, city.country!, "\("--") °", city.id)
+            favorites.append(favoriteCityAdded)
+        }
+        view?.reloadTableView(citiesAdded: favorites)
+        let ids = favoritesCities.map({$0.id})
+        interactor?.fetchWeatherBy(citiesId: ids)
+    }
+    
+    func multipleWeatherFetched(multipleWeather: MultipleWeather) {
+        favorites.removeAll()
+        for weather in multipleWeather.list {
+            let temp = Int(round(weather.main.temp))
+            let favoriteCityAdded = FavoriteCityWeather(weather.name, weather.sys.country, "\(temp) °", weather.id)
             favorites.append(favoriteCityAdded)
         }
         view?.reloadTableView(citiesAdded: favorites)
@@ -61,10 +73,9 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
     func presentationControllerDidDismiss() {
         let temp = Int(round(weatherOfCityAdded?.main.temp ?? 0))
-        var favoritesCities = [FavoriteCityWeather]()
-        let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", "\(temp) °")
-        favoritesCities.append(favoriteCityAdded)
-        view?.reloadTableView(citiesAdded: favoritesCities)
+        let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", "\(temp) °", weatherOfCityAdded?.id ?? 0)
+        favorites.append(favoriteCityAdded)
+        view?.reloadTableView(citiesAdded: favorites)
     }
     
 }

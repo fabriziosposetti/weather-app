@@ -64,5 +64,26 @@ class Deal {
         return request
     }
     
+    func getMultipleCurrentWeatherRequest(citiesId: [Int]) -> URLRequest {
+        let dict: KeyDict = self.getKey()
+        var queryIds = String()
+        var queryItems = [URLQueryItem(name: "appid", value: "\(dict.weatherAPIKey!)"),
+                          URLQueryItem(name: "units", value: "metric")]
+        
+        for cityId in citiesId {
+            if citiesId.last == cityId { queryIds.append(contentsOf: "\(cityId)") }
+            else {
+                queryIds.append(contentsOf: "\(cityId),")
+            }
+        }
+        queryItems.append(URLQueryItem(name: "id", value: "\(queryIds)"))
+        var urlComps = URLComponents(string: K.baseURL + "/group")!
+        
+        urlComps.queryItems = queryItems
+        
+        let url = (urlComps.url!)
+        let request = URLRequest(url: url)
+        return request
+    }
     
 }

@@ -16,15 +16,20 @@ class OpenWeatherAPI {
     static let shared = OpenWeatherAPI()
     
     private init() {}
-
+    
     func getWeather(latitude: String, longitude: String) -> Promise<CurrentWeather> {
         let request = Deal.shared.getCurrentWeatherRequest(latitude: latitude, longitude: longitude)
         return APIClient.request(request: request)
     }
-
+    
     func getWeather(cityId: Int) -> Promise<CurrentWeather> {
-           let request = Deal.shared.getCurrentWeatherRequest(cityId: cityId)
-           return APIClient.request(request: request)
-       }
+        let request = Deal.shared.getCurrentWeatherRequest(cityId: cityId)
+        return APIClient.request(request: request)
+    }
+    
+    func getWeatherForMultiplesCities(citiesId: [Int]) -> Promise<MultipleWeather> {
+        let request = Deal.shared.getMultipleCurrentWeatherRequest(citiesId: citiesId)
+        return APIClient.request(request: request)
+    }
     
 }

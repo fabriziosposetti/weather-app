@@ -50,13 +50,12 @@ class CurrentCityViewController: UIViewController {
         presenter?.presentationControllerDidDismiss()
     }
     
-    
 }
 
 extension CurrentCityViewController: CurrentCityViewProtocol {
     
     func reloadTableView(citiesAdded: [FavoriteCityWeather]) {
-        favoriteCities.append(contentsOf: citiesAdded)
+        favoriteCities = citiesAdded
         favoritesCitiesTableView.isHidden = !(favoriteCities.count >= 1)
         favoritesCitiesTableView.reloadData()
     }
@@ -109,8 +108,8 @@ extension CurrentCityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-//            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-//                                        longitude: userLocation.coordinate.longitude)
+            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+                                        longitude: userLocation.coordinate.longitude)
         }
     }
     

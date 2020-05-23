@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4ADE9045103C3D1EA96134B4 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A51F78910BEFA0B74C6784 /* Pods_WeatherApp.framework */; };
+		6937C2DF2478B0FF00C4EFAF /* MultipleCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937C2DE2478B0FF00C4EFAF /* MultipleCurrentWeather.swift */; };
 		69389F502474ABD3007C0FB9 /* CitySearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389F4E2474ABD3007C0FB9 /* CitySearcherViewController.swift */; };
 		69389F512474ABD3007C0FB9 /* CitySearcherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69389F4F2474ABD3007C0FB9 /* CitySearcherViewController.xib */; };
 		69389F532474ABE6007C0FB9 /* CitySearcherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389F522474ABE6007C0FB9 /* CitySearcherPresenter.swift */; };
@@ -47,6 +48,7 @@
 		393F2705A22F8023945FB99E /* Pods-weather-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather-app.debug.xcconfig"; path = "Target Support Files/Pods-weather-app/Pods-weather-app.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA8364D540420931C34FB89 /* Pods-WeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
 		53A51F78910BEFA0B74C6784 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6937C2DE2478B0FF00C4EFAF /* MultipleCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCurrentWeather.swift; sourceTree = "<group>"; };
 		69389F4E2474ABD3007C0FB9 /* CitySearcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearcherViewController.swift; sourceTree = "<group>"; };
 		69389F4F2474ABD3007C0FB9 /* CitySearcherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitySearcherViewController.xib; sourceTree = "<group>"; };
 		69389F522474ABE6007C0FB9 /* CitySearcherPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearcherPresenter.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				699E1C6E2471F2E6002F9C64 /* CurrentWeather.swift */,
+				6937C2DE2478B0FF00C4EFAF /* MultipleCurrentWeather.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				69389F5C2474B2BC007C0FB9 /* CitySearcherBuilder.swift in Sources */,
 				69389F502474ABD3007C0FB9 /* CitySearcherViewController.swift in Sources */,
 				699E1C7B2471FB27002F9C64 /* Constants.swift in Sources */,
+				6937C2DF2478B0FF00C4EFAF /* MultipleCurrentWeather.swift in Sources */,
 				699E1C5D2471C218002F9C64 /* CurrentCityInteractor.swift in Sources */,
 				69389F532474ABE6007C0FB9 /* CitySearcherPresenter.swift in Sources */,
 				699E1C602471C22E002F9C64 /* CurrentCityRouter.swift in Sources */,
