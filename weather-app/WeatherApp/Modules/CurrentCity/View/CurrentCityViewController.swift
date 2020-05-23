@@ -43,7 +43,11 @@ class CurrentCityViewController: UIViewController {
     }
     
     @IBAction func addBtnTapped(_ sender: UIButton) {
-        presenter?.addCityPressed()
+        if favoriteCities.count >= 5 {
+            showAlert(title: "ATENTION".localized(), message: "MAX_FAV_CITIES".localized(), action: nil)
+        } else {
+            presenter?.addCityPressed()
+        }
     }
     
     func presentationControllerDidDismiss() {

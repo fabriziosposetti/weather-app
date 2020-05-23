@@ -9,3 +9,6 @@
 "ERROR" = "Error";
 "CLOSE" = "Cerrar";
 "FAVORITES_CITIES" = "Ciudades favoritas";
+"ATENTION" = "Atención";
+"MAX_FAV_CITIES" = "Se puede agregar un máximo de 5 ciudades";
+
