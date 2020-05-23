@@ -32,4 +32,9 @@ class OpenWeatherAPI {
         return APIClient.request(request: request)
     }
     
+    func getForecastForCity(lat: Double, lon: Double) -> Promise<Forecast> {
+        let request = Deal.shared.getForecastRequest(lat: lat, lon: lon)
+         return APIClient.request(request: request)
+     }
+    
 }

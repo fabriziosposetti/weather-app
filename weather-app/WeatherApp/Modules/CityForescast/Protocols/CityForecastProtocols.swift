@@ -9,15 +9,20 @@
 import Foundation
 
 protocol CityForecastViewProtocol: class {
-
+    func showLoading()
+    func hideLoading()
+    func showError(error: Error)
+    func updateForecastView(forecastInformation: ForecastInformation)
 }
 
 protocol CityForecastPresenterProtocol: class {
-
+    func fetchForecast()
+    func onForecastFetched(forecast: Forecast)
+    func onForecastFetchedFailed(error: Error)
 }
 
 protocol CityForecastInteractorProtocol {
-
+    func fetchForecast()
 }
 
 protocol CityForecastRouterProtocol {

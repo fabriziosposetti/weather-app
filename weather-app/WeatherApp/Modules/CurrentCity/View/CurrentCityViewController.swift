@@ -22,7 +22,7 @@ class CurrentCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       configureTableView()
+        configureTableView()
         presenter?.viewDidLoaded()
     }
     
@@ -107,7 +107,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             presenter?.removeFavoriteCity(cityId: favoriteCities[indexPath.row].id)
@@ -117,7 +117,8 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.favoriteCitySelected(cityId: favoriteCities[indexPath.row].id)
+        presenter?.favoriteCitySelected(lat: favoriteCities[indexPath.row].lat ?? 0.0,
+                                        lon: favoriteCities[indexPath.row].lon ?? 0.0)
     }
     
 }

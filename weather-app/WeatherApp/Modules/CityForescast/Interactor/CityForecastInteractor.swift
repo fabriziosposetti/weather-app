@@ -10,13 +10,26 @@ import Foundation
 
 class CityForecastInteractor {
     weak var presenter: CityForecastPresenterProtocol?
-     var citySearcherRepository: WeatherRepository?
-     
-     init(currentCityRepository: WeatherRepository) {
-         self.citySearcherRepository = currentCityRepository
-     }
+    var citySearcherRepository: WeatherRepository?
+    var lat: Double?
+    var lon: Double?
+    
+    init(currentCityRepository: WeatherRepository) {
+        self.citySearcherRepository = currentCityRepository
+    }
 }
 
 extension CityForecastInteractor: CityForecastInteractorProtocol {
+    
+    func fetchForecast() {
+        if let lat = lat, let lon = lon {
+           _ = citySearcherRepository?.fetchForecast(lat: lat, lon: lon).done({ forecast in
+            self.presenter?.onForecastFetched(forecast: forecast)
+           }).catch({ error in
+            self.presenter?.onForecastFetchedFailed(error: error)
+           })
+        }
+    }
+    
     
 }

@@ -12,14 +12,13 @@ import SwiftyJSON
 import RealmSwift
 
 class WeatherDataRepository: WeatherRepository {
-    
+        
     private let openWeatherAPI = OpenWeatherAPI.shared
     private var realm : Realm!
     
     init() {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("cities.realm")
-        print(config.fileURL)
         realm = try! Realm(configuration: config)
     }
     
@@ -73,6 +72,10 @@ class WeatherDataRepository: WeatherRepository {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func fetchForecast(lat: Double, lon: Double) -> Promise<Forecast> {
+        openWeatherAPI.getForecastForCity(lat: lat, lon: lon)
     }
     
 }

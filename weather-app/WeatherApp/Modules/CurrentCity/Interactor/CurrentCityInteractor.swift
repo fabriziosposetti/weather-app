@@ -19,6 +19,7 @@ protocol WeatherRepository {
     func getFavoritesCities() -> Promise<[City]>
     func getWeatherForMultiplesCities(citiesId: [Int]) -> Promise<MultipleWeather>
     func removeFavoriteCity(cityId: Int)
+    func fetchForecast(lat: Double, lon: Double) -> Promise<Forecast>
 }
 
 

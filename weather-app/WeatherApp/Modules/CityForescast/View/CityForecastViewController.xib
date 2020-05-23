@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityForecastViewController" customModule="Weather" customModuleProvider="target">
             <connections>
+                <outlet property="cityLabel" destination="zs3-TB-6wZ" id="Rw7-zy-8cX"/>
+                <outlet property="daysTableView" destination="oE2-Nb-WR6" id="Lzj-GE-Bmn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,20 +19,38 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FORECAST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-RB-a97">
-                    <rect key="frame" x="164" y="437.5" width="86" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-forecast" translatesAutoresizingMaskIntoConstraints="NO" id="5CN-cE-uva">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zs3-TB-6wZ">
+                    <rect key="frame" x="179" y="84" width="56" height="37"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="31"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oE2-Nb-WR6">
+                    <rect key="frame" x="0.0" y="221" width="414" height="641"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Nrd-RB-a97" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UG2-QK-O76"/>
-                <constraint firstItem="Nrd-RB-a97" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ecv-YX-3TT"/>
+                <constraint firstItem="5CN-cE-uva" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2gd-Mz-LgO"/>
+                <constraint firstItem="oE2-Nb-WR6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4fQ-sa-kEX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5CN-cE-uva" secondAttribute="trailing" id="CDY-A5-PV0"/>
+                <constraint firstItem="oE2-Nb-WR6" firstAttribute="top" secondItem="zs3-TB-6wZ" secondAttribute="bottom" constant="100" id="Imn-wP-nzW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oE2-Nb-WR6" secondAttribute="trailing" id="OEn-cQ-H8Z"/>
+                <constraint firstAttribute="bottom" secondItem="5CN-cE-uva" secondAttribute="bottom" id="TOb-hG-tSk"/>
+                <constraint firstItem="zs3-TB-6wZ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Zk7-6R-gTz"/>
+                <constraint firstItem="zs3-TB-6wZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="Zzk-GN-T5X"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oE2-Nb-WR6" secondAttribute="bottom" id="uvn-jX-gIg"/>
+                <constraint firstItem="5CN-cE-uva" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yqW-ka-m5C"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="141" y="143"/>
+            <point key="canvasLocation" x="140.57971014492756" y="141.96428571428569"/>
         </view>
     </objects>
+    <resources>
+        <image name="background-forecast" width="414" height="736"/>
+    </resources>
 </document>

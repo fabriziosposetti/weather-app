@@ -9,7 +9,7 @@
 import Foundation
 
 class CityForecastBuilder {
-    static func createModule() -> CityForecastViewController{
+    static func createModule(lat: Double, lon: Double) -> CityForecastViewController{
         
         let router = CityForecastRouter()
         let presenter = CityForecastPresenter()
@@ -24,6 +24,8 @@ class CityForecastBuilder {
         interactor.presenter = presenter
         router.presenter = presenter
         router.view = view
+        interactor.lat = lat
+        interactor.lon = lon
         
         return view
     }

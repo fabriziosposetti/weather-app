@@ -12,8 +12,13 @@ struct CurrentWeather: Codable {
     let sys: Sys
     let name: String
     let id: Int
+    let coord: Coord
 }
 
+struct Coord: Codable {
+    let lon: Double
+    let lat: Double
+}
 
 // MARK: - Main
 struct Main: Codable  {

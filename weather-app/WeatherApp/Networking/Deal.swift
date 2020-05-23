@@ -86,13 +86,14 @@ class Deal {
         return request
     }
     
-    func getForecastRequest(cityId: Int) -> URLRequest {
+    func getForecastRequest(lat: Double, lon: Double) -> URLRequest {
            let dict: KeyDict = self.getKey()
-           let queryItems = [URLQueryItem(name: "id", value: "\(cityId)"),
+           let queryItems = [URLQueryItem(name: "lat", value: "\(lat)"),
+                             URLQueryItem(name: "lon", value: "\(lon)"),
                              URLQueryItem(name: "appid", value: "\(dict.weatherAPIKey!)"),
                              URLQueryItem(name: "units", value: "metric")]
            
-           var urlComps = URLComponents(string: K.baseURL + "/forecast")!
+           var urlComps = URLComponents(string: K.baseURL + "/onecall")!
            
            urlComps.queryItems = queryItems
            
