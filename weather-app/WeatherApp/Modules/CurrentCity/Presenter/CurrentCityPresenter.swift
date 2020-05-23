@@ -29,6 +29,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func removeFavoriteCity(cityId: Int) {
+        favorites.removeAll(where: {($0.id == cityId)})
         interactor?.removeFavoriteCity(cityId: cityId)
     }
     
@@ -38,7 +39,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func fetchWeatherFrom(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-      //  interactor?.fetchWeatherFrom(latitude: latitude, longitude: longitude)
+        interactor?.fetchWeatherFrom(latitude: latitude, longitude: longitude)
     }
     
     func weatherFetched(currentWeather: CurrentWeather) {
@@ -52,7 +53,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
             favorites.append(favoriteCityAdded)
         }
         view?.reloadTableView(citiesAdded: favorites)
-      //  if !favorites.isEmpty { interactor?.fetchWeatherBy(citiesId: favoritesCities.map({$0.id})) }
+        if !favorites.isEmpty { interactor?.fetchWeatherBy(citiesId: favoritesCities.map({$0.id})) }
     }
     
     func multipleWeatherFetched(multipleWeather: MultipleWeather) {
