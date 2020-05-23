@@ -17,9 +17,9 @@ class WeatherDataRepository: WeatherRepository {
     private var realm : Realm!
     
     init() {
-        let realmPath = Bundle.main.url(forResource: "cities", withExtension: "realm")!
-        let realmConfiguration = Realm.Configuration(fileURL: realmPath)
-        realm = try! Realm(configuration: realmConfiguration)
+        var config = Realm.Configuration()
+        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("cities.realm")
+        realm = try! Realm(configuration: config)
     }
     
     func getWeather(latitude: String, longitude: String) -> Promise<CurrentWeather> {
@@ -30,7 +30,6 @@ class WeatherDataRepository: WeatherRepository {
         openWeatherAPI.getWeather(cityId: cityId)
     }
     
-    
     func getCities() -> Promise<[City]> {
         return Promise { completion in
             let cities = Array(realm.objects(City.self))
@@ -38,6 +37,25 @@ class WeatherDataRepository: WeatherRepository {
         }
     }
     
+    func addWeatherFavoriteCity(weatherFavoriteCity: CurrentWeather) {
+        let cities: [City] =  Array(realm.objects(City.self).filter("id = %@", weatherFavoriteCity.id))
+        if let city = cities.first {
+            do {
+                try realm.write {
+                    city.isFavorite = true
+                }
+            } catch (let error) {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getFavoritesCities() -> Promise<[City]> {
+        return Promise { completion in
+            let cities: [City] =  Array(realm.objects(City.self).filter("isFavorite = %@", true))
+            completion.fulfill(cities)
+        }
+    }
     
 }
 

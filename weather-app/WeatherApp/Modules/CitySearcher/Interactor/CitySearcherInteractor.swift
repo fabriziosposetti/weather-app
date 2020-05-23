@@ -22,12 +22,12 @@ extension CitySearcherInteractor: CitySearcherInteractorProtocol {
     
     func fetchWeatherToSelectedCity(cityId: Int) {
         _ = citySearcherRepository?.getWeather(cityId: cityId).done({ currentWeather in
+            self.citySearcherRepository?.addWeatherFavoriteCity(weatherFavoriteCity: currentWeather)
             self.presenter?.currentWeatherForCitySelected(currentWeather: currentWeather)
         }).catch({ error in
             self.presenter?.currentWeatherForCitySelectedFailed(error: error)
         })
     }
-    
     
     func fetchCities() {
         _  = citySearcherRepository?.getCities().done({ cities in

@@ -14,7 +14,7 @@ protocol CurrentCityViewProtocol: class {
     func updateTemperatureLabel(temperature: String)
     func updateCurrentCityLabel(city: String)
     func showError(error: Error)
-    func reloadTableView(cityAdded: FavoriteCityWeather)
+    func reloadTableView(citiesAdded: [FavoriteCityWeather])
 }
 
 protocol CurrentCityPresenterProtocol: class {
@@ -24,10 +24,13 @@ protocol CurrentCityPresenterProtocol: class {
     func onWeatherFetchedFailed(error: Error)
     func addCityPressed()
     func presentationControllerDidDismiss()
+    func favoritesCitiesFetched(favoritesCities: [City])
+    func onFavoritesCitiesFetchedFailed(error: Error)
 }
 
 protocol CurrentCityInteractorProtocol {
     func fetchTemperatureFrom(latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    func getFavoritesCities()
     
 }
 

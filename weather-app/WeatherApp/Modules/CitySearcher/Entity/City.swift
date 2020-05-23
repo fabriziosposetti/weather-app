@@ -13,6 +13,7 @@ class City: Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String?
     @objc dynamic var country: String?
+    @objc dynamic var isFavorite = false
     
     override class func primaryKey() -> String? {
         return "id"

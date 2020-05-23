@@ -36,9 +36,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-FZ-I5B">
-                    <rect key="frame" x="351" y="48" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8O-FZ-I5B">
+                    <rect key="frame" x="362" y="56" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="6EP-CC-Mrc"/>
+                        <constraint firstAttribute="height" constant="40" id="fpf-q8-kcX"/>
+                    </constraints>
                     <state key="normal" image="plus">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -59,6 +62,8 @@
                 <constraint firstItem="mwI-hT-ypw" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="02B-3d-KnR"/>
                 <constraint firstAttribute="bottom" secondItem="bOh-5W-Z0G" secondAttribute="bottom" id="455-Fg-JmG"/>
                 <constraint firstItem="PIp-Kf-YGV" firstAttribute="top" secondItem="mwI-hT-ypw" secondAttribute="bottom" constant="25" id="8Gt-Uy-kOB"/>
+                <constraint firstItem="X8O-FZ-I5B" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="9dO-ul-Gr7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X8O-FZ-I5B" secondAttribute="trailing" constant="12" id="ABw-fl-kX4"/>
                 <constraint firstItem="bOh-5W-Z0G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AbL-Pz-EYu"/>
                 <constraint firstItem="PIp-Kf-YGV" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="SX6-7l-ceJ"/>
                 <constraint firstItem="aVs-kc-8b7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tzv-g4-XLS"/>

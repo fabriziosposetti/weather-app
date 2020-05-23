@@ -15,6 +15,8 @@ protocol WeatherRepository {
     func getWeather(latitude: String, longitude: String) -> Promise<CurrentWeather>
     func getWeather(cityId: Int) -> Promise<CurrentWeather>
     func getCities() -> Promise<[City]>
+    func addWeatherFavoriteCity(weatherFavoriteCity: CurrentWeather)
+    func getFavoritesCities() -> Promise<[City]>
 }
 
 
@@ -39,5 +41,12 @@ extension CurrentCityInteractor: CurrentCityInteractorProtocol {
         }
     }
     
+    func getFavoritesCities() {
+        _ = currentCityRepository?.getFavoritesCities().done({ favoritesCities in
+            self.presenter?.favoritesCitiesFetched(favoritesCities: favoritesCities)
+        }).catch({ error in
+            self.presenter?.onFavoritesCitiesFetchedFailed(error: error)
+        })
+    }
     
 }

@@ -17,13 +17,14 @@ class CurrentCityPresenter {
     var interactor: CurrentCityInteractorProtocol?
     var router: CurrentCityRouterProtocol?
     var weatherOfCityAdded: CurrentWeather?
-
+    
 }
 
 extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
     func viewDidLoaded() {
         view?.determineCurrentLocation()
+        interactor?.getFavoritesCities()
     }
     
     func fetchWeatherFrom(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
@@ -37,6 +38,19 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
         view?.updateCurrentCityLabel(city: city)
     }
     
+    func favoritesCitiesFetched(favoritesCities: [City]) {
+        var favorites = [FavoriteCityWeather]()
+        for city in favoritesCities {
+            let favoriteCityAdded = FavoriteCityWeather(city.name!, city.country!, "\("--") °")
+            favorites.append(favoriteCityAdded)
+        }
+        view?.reloadTableView(citiesAdded: favorites)
+    }
+    
+    func onFavoritesCitiesFetchedFailed(error: Error) {
+        view?.showError(error: error)
+    }
+    
     func onWeatherFetchedFailed(error: Error) {
         view?.showError(error: error)
     }
@@ -47,9 +61,10 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
     func presentationControllerDidDismiss() {
         let temp = Int(round(weatherOfCityAdded?.main.temp ?? 0))
-
+        var favoritesCities = [FavoriteCityWeather]()
         let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", "\(temp) °")
-        view?.reloadTableView(cityAdded: favoriteCityAdded)
+        favoritesCities.append(favoriteCityAdded)
+        view?.reloadTableView(citiesAdded: favoritesCities)
     }
     
 }

@@ -22,7 +22,7 @@ class CurrentCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+       configureTableView()
         presenter?.viewDidLoaded()
     }
     
@@ -55,11 +55,10 @@ class CurrentCityViewController: UIViewController {
 
 extension CurrentCityViewController: CurrentCityViewProtocol {
     
-    func reloadTableView(cityAdded: FavoriteCityWeather) {
-        favoritesCitiesTableView.isHidden = false
-        favoriteCities.append(cityAdded)
+    func reloadTableView(citiesAdded: [FavoriteCityWeather]) {
+        favoriteCities.append(contentsOf: citiesAdded)
+        favoritesCitiesTableView.isHidden = !(favoriteCities.count >= 1)
         favoritesCitiesTableView.reloadData()
-        
     }
     
     func determineCurrentLocation() {
@@ -110,8 +109,8 @@ extension CurrentCityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-                                        longitude: userLocation.coordinate.longitude)
+//            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+//                                        longitude: userLocation.coordinate.longitude)
         }
     }
     
