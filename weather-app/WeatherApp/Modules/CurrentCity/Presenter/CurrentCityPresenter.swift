@@ -18,9 +18,14 @@ class CurrentCityPresenter {
     var router: CurrentCityRouterProtocol?
     var weatherOfCityAdded: CurrentWeather?
     var favorites = [FavoriteCityWeather]()
+    var currentCityWeather: CurrentWeather?
 }
 
 extension CurrentCityPresenter: CurrentCityPresenterProtocol {
+    
+    func showCurrentCityForecast() {
+        router?.presentCityForecast(lat: currentCityWeather?.coord.lat ?? 0.0, lon: currentCityWeather?.coord.lon ?? 0.0, cityName: currentCityWeather?.name ?? "" + " ," + (currentCityWeather?.sys.country ?? ""))
+    }
     
     func favoriteCitySelected(citySelected: FavoriteCityWeather) {
         router?.presentCityForecast(lat: citySelected.lat ?? 0.0,
@@ -43,6 +48,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func weatherFetched(currentWeather: CurrentWeather) {
+        currentCityWeather = currentWeather
         view?.updateTemperatureLabel(temperature: currentWeather.main.getStringTemp())
         view?.updateCurrentCityLabel(city: currentWeather.name)
     }

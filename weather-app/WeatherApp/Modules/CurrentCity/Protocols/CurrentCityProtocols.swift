@@ -29,6 +29,7 @@ protocol CurrentCityPresenterProtocol: class {
     func multipleWeatherFetched(multipleWeather: MultipleWeather)
     func removeFavoriteCity(cityId: Int)
     func favoriteCitySelected(citySelected: FavoriteCityWeather)
+    func showCurrentCityForecast()
 }
 
 protocol CurrentCityInteractorProtocol {

@@ -56,6 +56,16 @@
                         <constraint firstAttribute="height" constant="400" id="bgE-v4-4h4"/>
                     </constraints>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Byj-wg-hJs">
+                    <rect key="frame" x="144.5" y="236" width="125" height="35"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <state key="normal" title="Ver Pronóstico">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="showCurrentForecastTapped:" destination="-1" eventType="touchUpInside" id="pmC-r8-n1e"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -65,6 +75,8 @@
                 <constraint firstItem="X8O-FZ-I5B" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="9dO-ul-Gr7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X8O-FZ-I5B" secondAttribute="trailing" constant="12" id="ABw-fl-kX4"/>
                 <constraint firstItem="bOh-5W-Z0G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AbL-Pz-EYu"/>
+                <constraint firstItem="Byj-wg-hJs" firstAttribute="centerX" secondItem="PIp-Kf-YGV" secondAttribute="centerX" id="Jrq-MQ-AFL"/>
+                <constraint firstItem="Byj-wg-hJs" firstAttribute="top" secondItem="PIp-Kf-YGV" secondAttribute="bottom" constant="8" id="PvV-BP-yZ2"/>
                 <constraint firstItem="PIp-Kf-YGV" firstAttribute="centerX" secondItem="bOh-5W-Z0G" secondAttribute="centerX" id="SX6-7l-ceJ"/>
                 <constraint firstItem="aVs-kc-8b7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tzv-g4-XLS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aVs-kc-8b7" secondAttribute="trailing" id="VLP-YW-Hgn"/>

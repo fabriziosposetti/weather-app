@@ -202,7 +202,7 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		6941E16C247982A900E17B39 /* CityForescast */ = {
+		6941E16C247982A900E17B39 /* CityForecast */ = {
 			isa = PBXGroup;
 			children = (
 				6941E1732479831A00E17B39 /* Protocols */,
@@ -213,7 +213,7 @@
 				6941E16D247982E200E17B39 /* View */,
 				6941E18024798B9E00E17B39 /* CityForecastBuilder.swift */,
 			);
-			path = CityForescast;
+			path = CityForecast;
 			sourceTree = "<group>";
 		};
 		6941E16D247982E200E17B39 /* View */ = {
@@ -366,7 +366,7 @@
 		699E1C512471BBAE002F9C64 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				6941E16C247982A900E17B39 /* CityForescast */,
+				6941E16C247982A900E17B39 /* CityForecast */,
 				69389F482474AB6D007C0FB9 /* CitySearcher */,
 				699E1C522471BBBC002F9C64 /* CurrentCity */,
 			);

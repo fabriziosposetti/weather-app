@@ -49,6 +49,10 @@ class CurrentCityViewController: UIViewController {
         }
     }
     
+    @IBAction func showCurrentForecastTapped(_ sender: Any) {
+        presenter?.showCurrentCityForecast()
+    }
+    
     func presentationControllerDidDismiss() {
         presenter?.presentationControllerDidDismiss()
     }
