@@ -36,10 +36,8 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func weatherFetched(currentWeather: CurrentWeather) {
-        let temp = Int(round(currentWeather.main.temp))
-        let city = currentWeather.name
-        view?.updateTemperatureLabel(temperature: "\(temp) °")
-        view?.updateCurrentCityLabel(city: city)
+        view?.updateTemperatureLabel(temperature: currentWeather.main.getStringTemp())
+        view?.updateCurrentCityLabel(city: currentWeather.name)
     }
     
     func favoritesCitiesFetched(favoritesCities: [City]) {
@@ -48,15 +46,13 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
             favorites.append(favoriteCityAdded)
         }
         view?.reloadTableView(citiesAdded: favorites)
-        let ids = favoritesCities.map({$0.id})
-     //   interactor?.fetchWeatherBy(citiesId: ids)
+        if !favorites.isEmpty { interactor?.fetchWeatherBy(citiesId: favoritesCities.map({$0.id})) }
     }
     
     func multipleWeatherFetched(multipleWeather: MultipleWeather) {
         favorites.removeAll()
         for weather in multipleWeather.list {
-            let temp = Int(round(weather.main.temp))
-            let favoriteCityAdded = FavoriteCityWeather(weather.name, weather.sys.country, "\(temp) °", weather.id)
+            let favoriteCityAdded = FavoriteCityWeather(weather.name, weather.sys.country, weather.main.getStringTemp(), weather.id)
             favorites.append(favoriteCityAdded)
         }
         view?.reloadTableView(citiesAdded: favorites)
@@ -75,8 +71,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     }
     
     func presentationControllerDidDismiss() {
-        let temp = Int(round(weatherOfCityAdded?.main.temp ?? 0))
-        let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", "\(temp) °", weatherOfCityAdded?.id ?? 0)
+        let favoriteCityAdded = FavoriteCityWeather(weatherOfCityAdded?.name ?? "", weatherOfCityAdded?.sys.country ?? "", weatherOfCityAdded?.main.getStringTemp() ?? "", weatherOfCityAdded?.id ?? 0)
         favorites.append(favoriteCityAdded)
         view?.reloadTableView(citiesAdded: favorites)
     }

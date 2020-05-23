@@ -19,6 +19,10 @@ struct CurrentWeather: Codable {
 struct Main: Codable  {
     let temp: Double
     let pressure, humidity: Int
+    
+    func getStringTemp() -> String {
+        return "\(Int(round(temp))) °"
+    }
 }
 
 // MARK: - Sys

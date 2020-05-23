@@ -108,7 +108,7 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
         if (editingStyle == .delete) {
             presenter?.removeFavoriteCity(cityId: favoriteCities[indexPath.row].id)
             favoriteCities.remove(at: indexPath.row)
-            tableView.reloadData()
+            reloadTableView(citiesAdded: favoriteCities)
         }
     }
     
@@ -120,8 +120,8 @@ extension CurrentCityViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let userLocation = locations.first {
             locationManager.stopUpdatingLocation()
-//            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
-//                                        longitude: userLocation.coordinate.longitude)
+            presenter?.fetchWeatherFrom(latitude: userLocation.coordinate.latitude,
+                                        longitude: userLocation.coordinate.longitude)
         }
     }
     
