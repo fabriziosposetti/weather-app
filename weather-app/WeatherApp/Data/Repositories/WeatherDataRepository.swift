@@ -19,6 +19,7 @@ class WeatherDataRepository: WeatherRepository {
     init() {
         var config = Realm.Configuration()
         config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("cities.realm")
+        print(config.fileURL)
         realm = try! Realm(configuration: config)
     }
     

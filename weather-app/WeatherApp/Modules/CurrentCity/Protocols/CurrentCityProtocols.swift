@@ -28,6 +28,7 @@ protocol CurrentCityPresenterProtocol: class {
     func onFavoritesCitiesFetchedFailed(error: Error)
     func multipleWeatherFetched(multipleWeather: MultipleWeather)
     func removeFavoriteCity(cityId: Int)
+    func favoriteCitySelected(cityId: Int)
 }
 
 protocol CurrentCityInteractorProtocol {
@@ -39,4 +40,5 @@ protocol CurrentCityInteractorProtocol {
 
 protocol CurrentCityRouterProtocol {
     func presentCitySearcher()
+    func presentCityForecast(cityId: Int)
 }

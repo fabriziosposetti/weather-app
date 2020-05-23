@@ -20,11 +20,18 @@ extension CurrentCityRouter: CurrentCityRouterProtocol {
     
     func presentCitySearcher() {
         if let view = view {
-            let viewController = CitySearcherModuleBuilder.createModule()
+            let viewController: CitySearcherViewController = CitySearcherModuleBuilder.createModule()
             view.modalPresentationStyle = .fullScreen
             view.present(viewController, animated: true, completion: nil)
         }
     }
     
+    func presentCityForecast(cityId: Int) {
+        if let view = view {
+            let viewController: CityForecastViewController = CityForecastBuilder.createModule()
+            view.modalPresentationStyle = .fullScreen
+            view.present(viewController, animated: true, completion: nil)
+        }
+    }
     
 }

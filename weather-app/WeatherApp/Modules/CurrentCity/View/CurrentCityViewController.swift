@@ -116,6 +116,9 @@ extension CurrentCityViewController: UITableViewDelegate, UITableViewDataSource 
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.favoriteCitySelected(cityId: favoriteCities[indexPath.row].id)
+    }
     
 }
 

@@ -22,6 +22,10 @@ class CurrentCityPresenter {
 
 extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
+    func favoriteCitySelected(cityId: Int) {
+        router?.presentCityForecast(cityId: cityId)
+    }
+    
     func removeFavoriteCity(cityId: Int) {
         interactor?.removeFavoriteCity(cityId: cityId)
     }

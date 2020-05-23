@@ -86,4 +86,19 @@ class Deal {
         return request
     }
     
+    func getForecastRequest(cityId: Int) -> URLRequest {
+           let dict: KeyDict = self.getKey()
+           let queryItems = [URLQueryItem(name: "id", value: "\(cityId)"),
+                             URLQueryItem(name: "appid", value: "\(dict.weatherAPIKey!)"),
+                             URLQueryItem(name: "units", value: "metric")]
+           
+           var urlComps = URLComponents(string: K.baseURL + "/forecast")!
+           
+           urlComps.queryItems = queryItems
+           
+           let url = (urlComps.url!)
+           let request = URLRequest(url: url)
+           return request
+       }
+    
 }
