@@ -11,6 +11,7 @@
 		6936EC38247AC7CC00B4AA58 /* CurrentCityModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936EC37247AC7CC00B4AA58 /* CurrentCityModuleTests.swift */; };
 		6936EC41247ADFF200B4AA58 /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936EC40247ADFF200B4AA58 /* MockRepository.swift */; };
 		6936EC43247AE3E600B4AA58 /* CityForecastModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936EC42247AE3E600B4AA58 /* CityForecastModuleTests.swift */; };
+		6936EC45247AEB5100B4AA58 /* CitySearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6936EC44247AEB5100B4AA58 /* CitySearcherTests.swift */; };
 		6937C2DF2478B0FF00C4EFAF /* MultipleCurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937C2DE2478B0FF00C4EFAF /* MultipleCurrentWeather.swift */; };
 		69389F502474ABD3007C0FB9 /* CitySearcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69389F4E2474ABD3007C0FB9 /* CitySearcherViewController.swift */; };
 		69389F512474ABD3007C0FB9 /* CitySearcherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69389F4F2474ABD3007C0FB9 /* CitySearcherViewController.xib */; };
@@ -80,6 +81,7 @@
 		6936EC39247AC7CC00B4AA58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6936EC40247ADFF200B4AA58 /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
 		6936EC42247AE3E600B4AA58 /* CityForecastModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecastModuleTests.swift; sourceTree = "<group>"; };
+		6936EC44247AEB5100B4AA58 /* CitySearcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearcherTests.swift; sourceTree = "<group>"; };
 		6937C2DE2478B0FF00C4EFAF /* MultipleCurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCurrentWeather.swift; sourceTree = "<group>"; };
 		69389F4E2474ABD3007C0FB9 /* CitySearcherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearcherViewController.swift; sourceTree = "<group>"; };
 		69389F4F2474ABD3007C0FB9 /* CitySearcherViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitySearcherViewController.xib; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				6936EC3F247ADFD800B4AA58 /* Mocks */,
 				6936EC42247AE3E600B4AA58 /* CityForecastModuleTests.swift */,
 				6936EC37247AC7CC00B4AA58 /* CurrentCityModuleTests.swift */,
+				6936EC44247AEB5100B4AA58 /* CitySearcherTests.swift */,
 				6936EC39247AC7CC00B4AA58 /* Info.plist */,
 			);
 			path = WeatherAppTests;
@@ -713,6 +716,7 @@
 				6936EC43247AE3E600B4AA58 /* CityForecastModuleTests.swift in Sources */,
 				6936EC38247AC7CC00B4AA58 /* CurrentCityModuleTests.swift in Sources */,
 				6936EC41247ADFF200B4AA58 /* MockRepository.swift in Sources */,
+				6936EC45247AEB5100B4AA58 /* CitySearcherTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

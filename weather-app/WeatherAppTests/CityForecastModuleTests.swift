@@ -27,11 +27,10 @@ class CityForecastModuleTests: XCTestCase {
         interactor.presenter = presenter
         router.presenter = presenter
         router.view = view
-        presenter.cityName = "nombre"
     }
     
     
-    func testForecastInformation() {
+    func testForecastInformationRetrieved() {
         let expectation = self.expectation(description: "Forecast expectation")
         
         _ = interactor.cityForecastRepository?.fetchForecast(lat: 0.0, lon: 0.0).done({ forecast in

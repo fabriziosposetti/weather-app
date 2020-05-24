@@ -13,11 +13,30 @@ import PromiseKit
 class MockRepository: WeatherRepository {
     
     func getWeather(cityId: Int) -> Promise<CurrentWeather> {
-        return Promise.init(error: AppWeatherError.internalServerError)
+        return Promise { completion in
+            let main = Main(temp: 30, pressure: 1, humidity: 1)
+            let weather = Weather(main: "")
+            let sys = Sys(country: "")
+            let cord = Coord(lon: 0, lat: 0)
+            let current = CurrentWeather(weather: [weather], main: main, sys: sys, name: "Bs As", id: 1, coord: cord)
+            completion.fulfill(current)
+        }
     }
     
     func getCities() -> Promise<[City]> {
-        return Promise.init(error: AppWeatherError.internalServerError)
+        return Promise { completion in
+            var cities = [City]()
+            let city1 = City()
+            city1.name = "city1"
+            city1.country = "country1"
+            let city2 = City()
+            city2.name = "city2"
+            city2.country = "country2"
+            
+            cities.append(city1)
+            cities.append(city2)
+            completion.fulfill(cities)
+        }
     }
     
     func addWeatherFavoriteCity(weatherFavoriteCity: CurrentWeather) {
@@ -31,8 +50,8 @@ class MockRepository: WeatherRepository {
             city1.name = "city1"
             city1.country = "country1"
             let city2 = City()
-            city1.name = "city2"
-            city1.country = "country2"
+            city2.name = "city2"
+            city2.country = "country2"
             
             favCities.append(city1)
             favCities.append(city2)

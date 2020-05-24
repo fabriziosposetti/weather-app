@@ -31,7 +31,7 @@ class CurrentCityModuleTests: XCTestCase {
     func testMockWeatherShouldHave10Temp() {
         
         let expectation = self.expectation(description: "Current Weather expectation")
-        
+                
         _ = interactor.currentCityRepository?.getWeather(latitude: "0", longitude: "0").done({ weather in
             XCTAssertNotNil(weather)
             XCTAssertTrue(10 == weather.main.temp)
@@ -61,9 +61,34 @@ class CurrentCityModuleTests: XCTestCase {
         _ = interactor.currentCityRepository?.getFavoritesCities().done({ favCities in
             XCTAssertNotNil(favCities)
             XCTAssertTrue(favCities.count == 2)
+            XCTAssertTrue(self.view.favoriteCities.count == 2)
             expectation.fulfill()
         })
         
+        self.waitForExpectations(timeout: 10.0, handler: nil)
+    }
+    
+    func testCurrentCurrentCityLabelShouldBeCordoba() {
+        let expectation = self.expectation(description: "Current Weather expectation")
+
+        presenter.viewDidLoaded()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertTrue(self.view.currentCity.text == "Córdoba")
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 10.0, handler: nil)
+    }
+    
+    func testCurrentTempLabelShouldBe10() {
+        let expectation = self.expectation(description: "Current Weather expectation")
+
+        presenter.viewDidLoaded()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertTrue(self.view.currentTemp.text == "10 °")
+            expectation.fulfill()
+        }
         self.waitForExpectations(timeout: 10.0, handler: nil)
     }
     
