@@ -55,7 +55,7 @@ extension CurrentCityPresenter: CurrentCityPresenterProtocol {
     
     func favoritesCitiesFetched(favoritesCities: [City]) {
         for city in favoritesCities {
-            let favoriteCityAdded = FavoriteCityWeather(city.name!, city.country!, "\("--") °", city.id, nil, nil)
+            let favoriteCityAdded = FavoriteCityWeather(city.name ?? "", city.country ?? "", "\("--") °", city.id, nil, nil)
             favorites.append(favoriteCityAdded)
         }
         view?.reloadTableView(citiesAdded: favorites)

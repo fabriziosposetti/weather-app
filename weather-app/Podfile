@@ -10,4 +10,8 @@ target 'WeatherApp' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'RealmSwift'
 
+ target 'WeatherAppTests' do
+      inherit! :search_paths
+  end
 end
+
