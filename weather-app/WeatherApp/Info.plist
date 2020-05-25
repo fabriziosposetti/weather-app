@@ -38,6 +38,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Neceistmos tu localizacion</string>
+	<string>Utilizaremos tu ubicación para obtener el clima de donde estás</string>
 </dict>
 </plist>
