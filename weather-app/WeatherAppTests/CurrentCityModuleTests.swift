@@ -12,7 +12,7 @@ import PromiseKit
 
 class CurrentCityModuleTests: XCTestCase {
     
-    let router = CurrentCityRouter()
+    let router = MockCurrentCityRouter()
     let presenter = CurrentCityPresenter()
     let interactor = CurrentCityInteractor(currentCityRepository: MockRepository())
     let view: CurrentCityViewController  =  CurrentCityViewController.loadXib()
@@ -31,7 +31,7 @@ class CurrentCityModuleTests: XCTestCase {
     func testMockWeatherShouldHave10Temp() {
         
         let expectation = self.expectation(description: "Current Weather expectation")
-                
+        
         _ = interactor.currentCityRepository?.getWeather(latitude: "0", longitude: "0").done({ weather in
             XCTAssertNotNil(weather)
             XCTAssertTrue(10 == weather.main.temp)
@@ -70,7 +70,7 @@ class CurrentCityModuleTests: XCTestCase {
     
     func testCurrentCurrentCityLabelShouldBeCordoba() {
         let expectation = self.expectation(description: "Current Weather expectation")
-
+        
         presenter.viewDidLoaded()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -82,7 +82,7 @@ class CurrentCityModuleTests: XCTestCase {
     
     func testCurrentTempLabelShouldBe10() {
         let expectation = self.expectation(description: "Current Weather expectation")
-
+        
         presenter.viewDidLoaded()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -92,7 +92,14 @@ class CurrentCityModuleTests: XCTestCase {
         self.waitForExpectations(timeout: 10.0, handler: nil)
     }
     
+    func testIfItShowsCityForecastScreen() {
+        presenter.showCurrentCityForecast()
+        XCTAssertTrue(router.showCityForecast)
+    }
+    
+    func testIfItShowsCitySearcher() {
+        presenter.addCityPressed()
+        XCTAssertTrue(router.showCitySearcher)
+    }
+    
 }
-
-
-
